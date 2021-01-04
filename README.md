@@ -33,7 +33,7 @@ Pull down and have at it. This a rough project and PRs would be welcomed to impr
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ronanduddy/Dockerised-Rails. Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ronanduddy/Dockerised-Ruby-on-Rails. Please read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details on our code of conduct.
 
 ## License
 
