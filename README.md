@@ -22,6 +22,21 @@ make run
 
 Now you can go to http://0.0.0.0:3000 to see the default Rails page. Rails is running! See app's [Makefile](Makefile.app) for some other commands provided.
 
+You will have to change the name of the Rails app now in the generated codebase. Search and replace `myapp` with the name you want to call your new Rails app. At this point it may be required to stop any running containers with 
+```Shell
+make stop
+```
+
+Because the app was generated within a container which has different ownerships set, if you are using a Linux OS, an error such as the following may occur: 
+```Shell
+PermissionError: [Errno 13] Permission denied: '/home/ronan/dev/app/tmp/db'
+```
+
+Therefore you may have change ownership of the app by running 
+```Shell
+sudo chown -R $USER:$USER app
+```
+
 To clean up ([crudely](Makefile)) any files that have been generated and docker images or containers that might not be working correctly run
 ```Shell
 make clean
