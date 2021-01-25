@@ -25,18 +25,16 @@ INIT_GUARD="guard init;"
 INIT_DEVISE="rails generate devise:install; rails generate devise User;"
 CMD="$RAILS_INSTALL$ADD_GEMS$BUNDLE$INIT_RSPEC$INIT_GUARD$INIT_DEVISE"
 
-# Run commands
-(cd app && docker-compose run --rm --no-deps web bash -c "${CMD}")
-
-# on ubuntu; change permissions
-sudo chown -R $USER:$USER app
-
-cp database.yml app/config
-
-# Apply changes with a re-build and migrate for initial schema generation
+# generate rails with gems installed,
+# chown and copy db config, build changes
+# and generate schema
 (
   cd app &&
-  docker-compose build web &&
+  docker-compose run --rm --no-deps web bash -c "${CMD}" &&
+  sudo chown -R $USER:$USER ../app &&
+  cp ../database.yml config &&
+  docker-compose build &&
+  docker-compose up -d test &&
   docker-compose run --rm web bash -c "rails db:create db:migrate"
 )
 
