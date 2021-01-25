@@ -1,50 +1,43 @@
 # Dockerised Rails
 
-This is essentially a script that creates a dockerised Ruby on Rails environment with a Postgres database. The intent of this project it to automate the creation of a dockerised Rails app for pet projects.
+This is essentially a script that creates a dockerised Ruby on Rails environment with a Postgres database and devise set up so that users can be registered.
+
+The intent of this project it to automate the creation of a dockerised Rails app for pet projects.
 
 ## Installation
 
-Simply clone this repo.
-
-## Usage
-
-To run the rough-and-ready 'dockerised Ruby on Rails' [script](installer.sh) run
+Simply clone this repo and to generate the 'dockerised Ruby on Rails' application run
 ```Shell
 make install
 ```
 
-This will create an `app` directory which will contain a Rails app with a [Dockerfile](Dockerfile) and [docker-compose.yml](docker-compose.yml).
+It will take about 5 minutes to the run [installer](installer.sh).
 
-You can now rename and copy the `app` directory to whatever and where ever you like. It is its own Rails project! While in the `app` directory it will be possible to run the following to boot up Rails and Postgres:
+Now an `app` directory has been created which will contain a Rails app with a [Dockerfile](Dockerfile) and [docker-compose.yml](docker-compose.yml).
+
+You can now copy/move and rename the `app` directory to whatever and where ever you like. It is its own Rails project! Search and replace `myapp` with the name you want to call your new Rails app.
+
+While in the `app` directory run the following to setup your generated app
+```Shell
+make setup
+```
+
+In a separate terminal, you will be able to stop the running services for the application by running
+```Shell
+make stop
+```
+
+To get the services running again run
 ```Shell
 make run
 ```
 
 Now you can go to http://0.0.0.0:3000 to see the default Rails page. Rails is running! See app's [Makefile](Makefile.app) for some other commands provided.
 
-You will have to change the name of the Rails app now in the generated codebase. Search and replace `myapp` with the name you want to call your new Rails app. At this point it may be required to stop any running containers with 
-```Shell
-make stop
-```
-
-Because the app was generated within a container which has different ownerships set, if you are using a Linux OS, an error such as the following may occur: 
-```Shell
-PermissionError: [Errno 13] Permission denied: '/home/ronan/dev/app/tmp/db'
-```
-
-Therefore you may have change ownership of the app by running 
-```Shell
-sudo chown -R $USER:$USER app
-```
-
-To clean up ([crudely](Makefile)) any files that have been generated and docker images or containers that might not be working correctly run
+At anytime things have become muddled, it's possible to clean up any generated docker artifacts and the generated Rails application by running
 ```Shell
 make clean
 ```
-
-## Development
-
-Pull down and have at it. This a rough project and PRs would be welcomed to improve it :).
 
 ## Contributing
 
