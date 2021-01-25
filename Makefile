@@ -1,10 +1,13 @@
-.PHONY: install stop clean clean_files docker_clean
+.PHONY: install run stop clean clean_files docker_clean
 
 install:
 	./installer.sh
 
+run:
+	(cd app && make run)
+
 stop:
-	(cd app && make stop) | true
+	(cd app && make stop)
 
 clean: clean_files docker_clean
 
