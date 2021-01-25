@@ -1,6 +1,6 @@
 # Dockerised Rails
 
-This is essentially a script that creates a dockerised Ruby on Rails environment with a Postgres database and devise set up so that users can be registered.
+This is essentially a script that creates a dockerised Ruby on Rails environment with a Postgres database and Devise set up so that users can be registered.
 
 The intent of this project it to automate the creation of a dockerised Rails app for pet projects.
 
@@ -11,13 +11,11 @@ Simply clone this repo and to generate the 'dockerised Ruby on Rails' applicatio
 make install
 ```
 
-It will take about 5 minutes to the run [installer](installer.sh).
+It will take about 5 minutes to run the [installer](installer.sh).
 
-Now an `app` directory has been created which will contain a Rails app with a [Dockerfile](Dockerfile) and [docker-compose.yml](docker-compose.yml).
+Now an `app` directory will be created containing the Rails application. This directory can now be copied/moved and renamed to whatever and where ever you like. It is its own Rails project! Search and replace instances of `myapp` with the name you want to call your new Rails app.
 
-You can now copy/move and rename the `app` directory to whatever and where ever you like. It is its own Rails project! Search and replace `myapp` with the name you want to call your new Rails app.
-
-While in the `app` directory run the following to setup your generated app
+While in the Rails directory run the following to setup your generated app
 ```Shell
 make setup
 ```
@@ -32,7 +30,7 @@ To get the services running again run
 make run
 ```
 
-Now you can go to http://0.0.0.0:3000 to see the default Rails page. Rails is running! See app's [Makefile](Makefile.app) for some other commands provided.
+Now you can go to http://0.0.0.0:3000 to see the default Rails page. Rails is running! See the [Makefile](Makefile.app) for some other commands provided.
 
 At anytime things have become muddled, it's possible to clean up any generated docker artifacts and the generated Rails application by running
 ```Shell
