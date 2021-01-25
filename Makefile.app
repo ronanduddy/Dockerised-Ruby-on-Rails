@@ -28,5 +28,5 @@ build:
 setup: build
 	@docker-compose up -d web
 	@docker-compose up -d test
-	@docker-compose run --rm web bash -c "rails log:clear tmp:clear db:prepare assets:precompile"
+	@docker-compose run --rm web bash -c "rails log:clear tmp:clear db:migrate assets:precompile"
 	@docker-compose up web
